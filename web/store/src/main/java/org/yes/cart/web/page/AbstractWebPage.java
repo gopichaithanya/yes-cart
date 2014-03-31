@@ -42,7 +42,6 @@ import org.yes.cart.web.util.WicketUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
@@ -121,17 +120,17 @@ public class AbstractWebPage extends WebPage {
                 PAGE_TITLE,
                 getPageTitle()));
 
-        Label desc = new Label(DESCRIPTION, "");
+        Label desc = new Label(DESCRIPTION,"");
         desc.add( new AttributeAppender("content", getDescription(), " "));
         addOrReplace(desc);
 
-        Label keywords = new Label(KEYWORDS, "");
+        Label keywords = new Label(KEYWORDS,"");
         keywords.add( new AttributeAppender("content", getKeywords(), " "));
         addOrReplace(keywords);
 
-        Label created = new Label(CREATED, "");
+        /*Label created = new Label(CREATED,"");
         created.add( new AttributeAppender("content", getCreated(), " "));
-        addOrReplace(created);
+        addOrReplace(created);*/ // TODO: YC-362
 
     }
 
@@ -253,14 +252,6 @@ public class AbstractWebPage extends WebPage {
             return new Model<String>(ApplicationDirector.getCurrentShop().getSeo().getMetakeywords());
         }
         return null;
-    }
-
-    /**
-     * Get created date time.
-     * @return page created
-     */
-    public IModel<String> getCreated() {
-        return new Model<String>(new Date().toString());
     }
 
 
